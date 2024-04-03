@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Overseer</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<style>
+
+	.case-study-intro {
+	    display: table;
+	    width: 100%;
+	    height: auto;
+	    padding: 100px 0;
+	    text-align: center;
+	    color: #fff;
+	    background-image: url("logos/maxresdefault.jpg");
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	   	-webkit-background-size: cover;
+	    -moz-background-size: cover;
+		-o-background-size: cover;
+	}
+
+	.case-study-intro .case-study-intro-body {
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+
+	.case-study-intro .case-study-intro-body .brand-heading {
+	    font-size: 40px;
+	}
+
+	.case-study-intro .case-study-intro-body .case-study-intro-text {
+	    font-size: 18px;
+	}
+
+	@media(min-width:768px) {
+	    .case-study-intro {
+	        height: 100%;
+	        padding: 0;
+	    }
+
+	    .case-study-intro .case-study-intro-body .brand-heading {
+	        font-size: 100px;
+	    }
+
+	    .case-study-intro .case-study-intro-body .case-study-intro-text {
+	        font-size: 26px;
+	    }
+	}	
+</style>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80117523-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">
+                    <i class="fa fa-asterisk"></i>  Overseer
+                </a>
+            </div>
+        </div>
+    </nav>
+
+	<!--div class="parallax"></div -->
+	<header class="case-study-intro">
+	    <div class="case-study-intro-body">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-8 col-md-offset-2">
+	                    <h1><b>Debugging Outages 10x Faster</b></h1>
+	                    <p class="case-study-intro-text">Finding the needle in the haystack.</p>						
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</header>
+	
+    <section id="about" class="content-section">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-10">       
+					<h2>Problem</h2>
+
+					<p>Rainforest QA had several apps hosted on Heroku, but depended on AWS SQS for message passing. The specific incident here was that SQS had an outage. They had over 7,000 metrics (across their Heroku logs, CloudWatch metrics, and custom metrics), which were stored in Librato. While they were alerting on too many messages being passed through SQS, they did not anticipate that there could be an outage. Hence, they were not alerting on too few messages being passed through the service. Setting up an alert on all 7,000 metrics would not only require them to maintain the thresholds, but would ultimately lead to alert fatigue.</p>
+					<p>Thus, in the face of an incident, they were forced to dig through all their metrics before they uncovered the root cause. They had all the necessary data to diagnose the issue, but because there were so many metrics, it took them over 45 minutes to discover the 
+					problem.</p>
+					<p>They reached out to Overseer to help them improve their reliability metrics.</p>
+
+					<h2>Solution</h2>				
+					<p>Given the volume of metrics, Overseer wanted to come up with an approach that would help eliminate as much noise as possible. If Overseer could reduce the number of metrics that an operator would have to look at, they’d be able to uncover the clues that would help them diagnose root cause faster. One way to achieve that was by taking a top-down approach to eliminate large quantities of metrics that would otherwise need to be looked at.</p>
+
+					<p>Step 1 -</p>
+					<p>The first step consisted of partitioning their 7,000+ metrics into logical groups that reflect different aspects of their system. They chose to partition the metrics into 6 groups, in which each group would represent a different app.</p>
+					<p>This step essentially created a specification of their system and enabled Overseer to understand which metrics should be analyzed as a group. In this case, they were interested in understanding the health of each of their six apps.</p>
+					<img src="img/step_1.png" width="100%" height="100%"></img>
+					<p></p>
+
+					<p>Step 2 -</p>
+					<p>Performing Step 1 enables the operator to encode their knowledge of the system into the tool. Once this is done, the tool is able to auto-generate a new dashboard for each of their services. In Step 1, they partitioned their metrics into 6 services, resulting in a dashboard with 6 charts, one for each of their services. Basically, this dashboard summarized their 7,000+ metrics into 6 charts. And each chart attempts to quantify the health of that service by summarizing all the metrics that were tagged to that service (the health score). When the health score for a given service spikes, that means the underlying metrics for that service are degrading, and hence something could be wrong.</p>
+					<img src="img/step_2.png" width="100%" height="100%"></img>
+					<p></p>
+
+					<p>Step 3 -</p>
+					<p>Picking a point on the spike around the middle of the “rainforest” plot, you can see a ranking of the underlying metrics for that group.</p>
+
+					<p>The next step is to interrogate the machine learning model to understand what caused this spike in the health score. This approach will quickly help to organize the underlying metrics for a service at some point in time by placing the important metrics near the top (because they contributed most to the overall health score) and the least important near the bottom (because they contributed least to the health score).</p>
+					<img src="img/step_3.png" width="100%" height="100%"></img>
+					<p></p>
+
+					<p>By looking at the plots, you can see that there are several references to “sqs” metrics. In a matter of minutes, Rainforest would’ve known that there was something going on with SQS. Note that Overseer is not telling them that SQS is broken - it's simply helping them sift through their data faster.</p>
+
+					<h2>Results</h2>
+					<p>It took Rainforest QA over 45 minutes to dig through their data and find the problem, but Overseer would’ve been able to give them the right clues within 4–5 minutes from the start of the incident.</p>
+				</div>
+				<div class="col-lg-offset-2"></div>
+	        </div>
+	    </div>
+    </section>
+
+	<header class="case-study-intro">
+	    <div class="case-study-intro-body">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-8 col-md-offset-2">
+                            <h2>Let us help you perform faster root cause analysis in your production environment.</h2>
+                            <!--a href="demo.html" class="btn btn-primary btn-default btn-lg">Get Started Today!</a-->
+                        <!--form method="POST" action="http://127.0.0.1:5000/tryit" class="form-inline" id="emailForm" data-toggle="validator" role="form">
+                            <div class="form-group">
+                                <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Your email address" data-error="invalid" required>                            
+                            </div>                                                   
+		                	<button type="submit" class="btn btn-primary btn-default btn-lg">Get Started Today!</button>
+                        </form-->   	                
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</header>    
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+    <!--script>
+      window.intercomSettings = {
+        app_id: "yn90mh4r"
+      };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/yn90mh4r';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+    </script-->    
+
+
+</body>
+</html>

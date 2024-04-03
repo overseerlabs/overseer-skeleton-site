@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Overseer</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<style>
+
+	.case-study-intro {
+	    display: table;
+	    width: 100%;
+	    height: auto;
+	    padding: 100px 0;
+	    text-align: center;
+	    color: #fff;
+	    background-image: url("img/server_farm2.jpg");
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	   	-webkit-background-size: cover;
+	    -moz-background-size: cover;
+		-o-background-size: cover;
+	}
+
+	.case-study-intro .case-study-intro-body {
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+
+	.case-study-intro .case-study-intro-body .brand-heading {
+	    font-size: 40px;
+	}
+
+	.case-study-intro .case-study-intro-body .case-study-intro-text {
+	    font-size: 18px;
+	}
+
+	@media(min-width:768px) {
+	    .case-study-intro {
+	        height: 100%;
+	        padding: 0;
+	    }
+
+	    .case-study-intro .case-study-intro-body .brand-heading {
+	        font-size: 100px;
+	    }
+
+	    .case-study-intro .case-study-intro-body .case-study-intro-text {
+	        font-size: 26px;
+	    }
+	}	
+</style>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80117523-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">
+                    <i class="fa fa-asterisk"></i>  Overseer
+                </a>
+            </div>
+        </div>
+    </nav>
+
+	<!--div class="parallax"></div -->
+	<header class="case-study-intro">
+	    <div class="case-study-intro-body">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-8 col-md-offset-2">
+	                    <h1><b>Mitigate Noisy Neighbor Problems</b></h1>
+	                    <p class="case-study-intro-text">Find the unhealthy machines in your server farm.</p>						
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</header>
+	
+    <section id="about" class="content-section">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-10">       
+					<h2>Problem</h2>
+
+					<p>A large infrastructure company had thousands of machines in their server farm, which were used to process customer jobs.</p>
+					<p>They had good monitoring and alerting, but it wasn't possible for a human to watch all the servers. Consequently, they set alerts on system metrics for each of these machines.</p>
+					<p>However, this was not an ideal solution because subtle behavioral changes of the servers triggered degraded customer experience, yet not be enough to trigger an alert. One way they tried to mitigate this problem was to make the alerting more sensitive, but that just led to alert fatigue. Furthermore, setting alerts required tuning and managing over time, so it was a poor long-term solution.</p>
+					<p>Thus, they worked with Overseer to help them detect unhealthy machines in their server farm more efficiently. Solving this problem would enable them to scale their business as they increase the number of servers without compromising their commitment to high-quality customer experience.</p>
+
+					<h2>Solution</h2>				
+					<p>Overseer worked with the domain experts to identify a core group of metrics that would be a good proxy for the health of a given server. This group of metrics was then used to train Overseer's algorithms to model the behavior of healthy servers.</p>
+
+					<p>The algorithms took as input a large number of metrics and summarized the server's behavior into a new "meta-metric." Instead of watching each of these metrics, users can now watch this new metric as an alternative for a given server.</p>
+
+					<p>Now that Overseer had created a simple way of reasoning about a server's behavior at any point in time without needing to watch a large number of metrics, the next step was to figure out how to extend this approach to help identify unhealthy servers. What Overseer did was use its trained model to generate the "meta-metric" for each of the servers in real-time. This reduced the space of information requiring examination drastically. Next, Overseer applied a second layer of analysis across all the "meta-metrics" to find the outliers. These outliers helped identify the unhealthy servers.</p>
+					<p></p>
+
+					<h2>Results</h2>
+					<p>Overseer was able to catch many unhealthy servers that were impacting customers.</p>
+					<p>One issue that it caught was when a customer submitted a large job and the performance of a small percent of their servers were slowly degrading. Because of the way Overseer's algorithms work, it was able to spot unhealthy servers hours before they would have been caught otherwise.</p>
+					<p>After observing these results, the customers were convinced that machine learning could add a lot of value to their business. By identifying these unhealthy servers scalably, they would be able to re-route traffic to healthy machines to reduce customer impact. Not only can it allow them to scale the company by taking on more customers (and increasing their server farm size), but do it in a way that won't require throwing more bodies at the problem...all while maintaining pristine customer experience!</p>
+
+					<h2>Benefits</h2>
+					<p>Our approach to uncovering unknown-unknowns had a number of benefits including:</p>
+					<p>1. A simple way to watch a large number of metrics without having to tweak and maintain a lot of thresholds.</p>
+					<p>2. As a result of (1), Overseer was also able to mitigate the alert fatigue problem.</p>
+					<p>3. Because Overseer's "meta-metric" was constructed from an original input space of many metrics, the only way it'll get flagged as an outlier is if many of the input metrics start to degrade. Thus, Overseer's findings are more acculate with fewer false positives. This benefit further mitigates alert fatigue.</p>
+				</div>
+				<div class="col-lg-offset-2"></div>
+	        </div>
+	    </div>
+    </section>
+
+	<header class="case-study-intro">
+	    <div class="case-study-intro-body">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-8 col-md-offset-2">
+                        <h2>Let us help you monitor your servers at scale.</h2>
+                        <!--a href="demo.html" class="btn btn-primary btn-default btn-lg">Get Started Today!</a-->
+                        <!--form method="POST" action="http://127.0.0.1:5000/tryit" class="form-inline" id="emailForm" data-toggle="validator" role="form">
+                            <div class="form-group">
+                                <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Your email address" data-error="invalid" required>                            
+                            </div>                                                   
+		                	<button type="submit" class="btn btn-primary btn-default btn-lg">Get Started Today!</button>
+                        </form-->   	                
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</header>    
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+    <!--script>
+      window.intercomSettings = {
+        app_id: "yn90mh4r"
+      };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/yn90mh4r';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+    </script-->    
+
+
+</body>
+</html>
